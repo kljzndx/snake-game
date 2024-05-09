@@ -27,14 +27,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: pnpm
+      - name: pnpm setup
+        uses: pnpm/action-setup@v4
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: install dependcies
+        run: pnpm install
       - name: Static HTML export with vite
         run: pnpm run build
       - name: Upload artifact
